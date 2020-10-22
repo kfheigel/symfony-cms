@@ -15,14 +15,10 @@ class DataFlushController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $user = new User();
-        $user->setAge(20);
         $user->setEmail('kfheigel@gmail.com');
-        $user->setFirstname('Krzysiek');
-        $user->setLastname('Heigel');
-        $user->setUsername('Kleks');
-        $user->setPassword('qwerty');
         $user->setCreatedAt(new \DateTime());
-        $user->setUserRole('USER_ROLE');
+        $user->setPassword('qwerty');
+        $user->setUsername('kleks');
 
         $em->persist($user);
         $em->flush();

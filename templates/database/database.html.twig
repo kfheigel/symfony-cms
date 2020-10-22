@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="mt-5">Hi, upload some data to database</h1>
+    <a href="/db-flush" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Make It!</a>
+    <ul>
+    {% for user in users %}
+        
+            <li>{{ user.email }}</li>
+            <li>{{ user.username }}</li>
+            <li>{{ user.password }}</li>
+        
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
