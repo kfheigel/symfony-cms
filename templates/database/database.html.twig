@@ -1,19 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello{% endblock %}
+{% block title %}Database{% endblock %}
 
 {% block body %}
 <div class="container">
     <h1 class="mt-5">Hi, upload some data to database</h1>
-    <a href="/db-flush" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Make It!</a>
-    <ul>
+    <a href="/db-flush" class="btn btn-primary btn-lg active mb-3" role="button" aria-pressed="true">Make It!</a></br>
+    <caption>Database entries</caption>
+    <table style="width:100%" class="mt-3">
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Username</th>
+            <th>Age</th>
+            <th>User Photo</th>
+            <th>Created At</th>
+            <th>Edit info</th>
+            <th>Delete user</th>
+        </tr>
     {% for user in users %}
-        
-            <li>{{ user.email }}</li>
-            <li>{{ user.username }}</li>
-            <li>{{ user.password }}</li>
-        
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <ul>
+                {% for role in user.roles %}
+                    <li>{{ role }}</li>
+                {% endfor %}
+                </ul>
+            </td>
+            <td>{{ user.username }}</td>
+            <td>
+                {% if user.age == null %}
+                    - 
+                {% else %}
+                    {{ user.age }}
+                {% endif %}
+            </td>
+            <td>
+                {% if user.userphoto == null %}
+                    - 
+                {% else %}
+                    {{ user.userphoto }}
+                {% endif %}
+            </td>
+            <td>{{ user.createdAt|date('d.m.Y H:i:s') }}</td>
+            <td>
+                {% if app.user.username == user.username %}
+                    <a href="{{ path('edit_user',{'id': user.id})}}" class="btn btn-success active" role="button" aria-pressed="true">Edit</a>
+                {% else %}
+                    <button type="button" class="btn btn-success" disabled>Edit</button>
+                {% endif %}
+            </td>
+            <td>
+                {% if app.user.username == user.username %}
+                    <button type="button" class="btn btn-danger" disabled>Delete</button>
+                {% else %}
+                    <a href="{{ path('delete_user',{'id': user.id})}}" class="btn btn-danger active" role="button" aria-pressed="true">Delete</a>
+                {% endif %}
+            </td>
+        </tr>
+
     {% endfor %}
-    </ul>
+    </table>
 </div>
 {% endblock %}

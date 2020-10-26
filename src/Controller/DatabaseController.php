@@ -13,6 +13,9 @@ class DatabaseController extends AbstractController
      */
     public function index()
     {
+        if(!$this->getUser()){
+            return $this->redirectToRoute('index'); 
+        }
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
         return $this->render('database/database.html.twig', [
             'users' => $users,
