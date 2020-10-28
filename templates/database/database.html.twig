@@ -42,7 +42,7 @@
                 {% if user.userphoto == null %}
                     - 
                 {% else %}
-                    {{ user.userphoto }}
+                    <img src="photo/{{user.userphoto}}" height="50">
                 {% endif %}
             </td>
             <td>{{ user.createdAt|date('d.m.Y H:i:s') }}</td>

@@ -3,7 +3,7 @@
 {% block title %}Edit User{% endblock %}
 
 {% block body %}
-<div class="container">
+
     <h1 class="mt-5">Edit User Info</h1>
     {% form_theme editUserForm 'bootstrap_4_layout.html.twig' %}
     {{ form_start(editUserForm) }}
@@ -13,9 +13,8 @@
         {{ form_row(editUserForm.password)}}
         {{ form_row(editUserForm.userphoto)}}
         <div class="button-box">
-            <input type="submit" value="Send" class="form-control btn btn-success w-50 align-self-center form-button" />
-            <button class="btn btn-primary form-button"> Go to Database </button>
+            <input type="submit" value="Send" class="form-control btn btn-success w-50 align-self-center"/>
+            <a class="btn btn-primary" style="width:529px;" href="{{ path('database') }}"> Go to Database </a>
         </div>
     {{ form_end(editUserForm) }}
-</div>
 {% endblock %}

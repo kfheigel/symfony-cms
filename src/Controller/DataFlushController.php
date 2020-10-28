@@ -23,7 +23,7 @@ class DataFlushController extends AbstractController
 
         $em->persist($user);
         $em->flush();
-
+        $this->addFlash('success', 'User has been added');
         return $this->redirectToRoute('database');
     }   
 }

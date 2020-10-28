@@ -18,21 +18,21 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
+                    <li class="nav-item {{ app.request.get('_route') == 'index' ? 'active' }}">
                         <a class="nav-link" href="{{ path('index') }}">Home</a>
                     </li>
                     {% if app.user %}
-                    <li class="nav-item">
+                    <li class="nav-item {{ app.request.get('_route') == 'app_logout' ? 'active' }}">
                         <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ app.request.get('_route') == 'database' ? 'active' }}">
                         <a class="nav-link" href="{{ path('database') }}">Database</a>
                     </li>
                     {% else %}
-                    <li class="nav-item">
+                    <li class="nav-item {{ app.request.get('_route') == 'app_login' ? 'active' }}">
                         <a class="nav-link" href="{{ path('app_login') }}">Login</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ app.request.get('_route') == 'app_register' ? 'active' }}">
                         <a class="nav-link" href="{{ path('app_register') }}">Register</a>
                     </li>
                     {% endif %}
@@ -40,7 +40,16 @@
                 </div>
             </nav>
         </div>
-        {% block body %}{% endblock %}
+        <div class="container">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }} mt-5">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}    
+            {% block body %}{% endblock %}
+        </div>
         {% block javascripts %}
         <script src="{{ asset('assets/js/bootstrap.min.js' )}}"></script>
         <script src="{{ asset('assets/js/popper.min.js' )}}"></script>
