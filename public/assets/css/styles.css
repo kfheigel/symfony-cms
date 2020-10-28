@@ -12,3 +12,8 @@ background-color: #eee;
 tr:nth-child(odd) {
 background-color: #fff;
 }
+
+.button-box {
+  text-align:center;
+  margin-top:20px;
+}

@@ -5,6 +5,17 @@
 {% block body %}
 <div class="container">
     <h1 class="mt-5">Edit User Info</h1>
-    
+    {% form_theme editUserForm 'bootstrap_4_layout.html.twig' %}
+    {{ form_start(editUserForm) }}
+        {{ form_row(editUserForm.username)}}
+        {{ form_row(editUserForm.email)}}
+        {{ form_row(editUserForm.age)}}
+        {{ form_row(editUserForm.password)}}
+        {{ form_row(editUserForm.userphoto)}}
+        <div class="button-box">
+            <input type="submit" value="Send" class="form-control btn btn-success w-50 align-self-center form-button" />
+            <button class="btn btn-primary form-button"> Go to Database </button>
+        </div>
+    {{ form_end(editUserForm) }}
 </div>
 {% endblock %}
