@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}External Api{% endblock %}
+
+{% block body %}
+
+    <h1 class="mt-5">External Api</h1>
+    <caption>Covid statistics</caption>
+    <table style="width:100%" class="mt-3">
+    <tr>
+        <th>Country</th>
+        <th>New Cases</th>
+        <th>New Deaths</th>
+    </tr>
+    {% for i in 0..150 %}
+    <tr>
+        <td>{{ api_data[i]['Country'] }}</td>
+        <td>{{ api_data[i]['NewConfirmed'] }}</td>
+        <td>{{ api_data[i]['NewDeaths'] }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

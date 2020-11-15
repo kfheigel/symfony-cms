@@ -18,24 +18,27 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                    <li class="nav-item {{ app.request.get('_route') == 'index' ? 'active' }}">
-                        <a class="nav-link" href="{{ path('index') }}">Home</a>
-                    </li>
-                    {% if app.user %}
-                    <li class="nav-item {{ app.request.get('_route') == 'app_logout' ? 'active' }}">
-                        <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
-                    </li>
-                    <li class="nav-item {{ app.request.get('_route') == 'database' ? 'active' }}">
-                        <a class="nav-link" href="{{ path('database') }}">Database</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item {{ app.request.get('_route') == 'app_login' ? 'active' }}">
-                        <a class="nav-link" href="{{ path('app_login') }}">Login</a>
-                    </li>
-                    <li class="nav-item {{ app.request.get('_route') == 'app_register' ? 'active' }}">
-                        <a class="nav-link" href="{{ path('app_register') }}">Register</a>
-                    </li>
-                    {% endif %}
+                        <li class="nav-item {{ app.request.get('_route') == 'index' ? 'active' }}">
+                            <a class="nav-link" href="{{ path('index') }}">Home</a>
+                        </li>
+                        {% if app.user %}
+                        <li class="nav-item {{ app.request.get('_route') == 'app_logout' ? 'active' }}">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                        </li>
+                        <li class="nav-item {{ app.request.get('_route') == 'database' ? 'active' }}">
+                            <a class="nav-link" href="{{ path('database') }}">Database</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item {{ app.request.get('_route') == 'app_login' ? 'active' }}">
+                            <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+                        </li>
+                        <li class="nav-item {{ app.request.get('_route') == 'app_register' ? 'active' }}">
+                            <a class="nav-link" href="{{ path('app_register') }}">Register</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item {{ app.request.get('_route') == 'external_api' ? 'active' }}">
+                            <a class="nav-link" href="{{ path('external_api') }}">Covid API</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
